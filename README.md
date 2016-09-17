@@ -38,8 +38,7 @@ More information about TRIS are available [here](https://en.wikipedia.org/wiki/T
     - Method: POST
     - Parameters: user_name, email
     - Returns: Message confirming creation of the User.
-    - Description: Creates a new User. user_name provided must be unique. Will
-    raise a ConflictException if a User with that user_name already exists.
+    - Description: Creates a new User. user_name provided must be unique. Will raise a ConflictException if a User with that user_name already exists.
 
  - **new_game**
     - Path: 'game'
@@ -74,7 +73,7 @@ More information about TRIS are available [here](https://en.wikipedia.org/wiki/T
     - Returns: ScoreForms.
     - Description: Returns all Scores in the database (unordered).
 
-- **get_user_scores**
+ - **get_user_scores**
     - Path: 'scores/user/{user_name}'
     - Method: GET
     - Parameters: user_name
@@ -103,7 +102,7 @@ More information about TRIS are available [here](https://en.wikipedia.org/wiki/T
     - Returns: UserForms sorted by points.
     - Description: Returns all players ranked by points.
 
-- **get_game_history**
+ - **get_game_history**
     - Path: 'game/{urlsafe_game_key}/history'
     - Method: GET
     - Parameters: urlsafe_game_key
