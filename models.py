@@ -85,7 +85,7 @@ class Game(ndb.Model):
     history = ndb.PickleProperty(required=True)
 
     @classmethod
-    def new_game(class, userX, userO):
+    def new_game(cls, userX, userO):
         """Returns a new game"""
         game = Game(userX=userX,
                     userO=userO,
@@ -136,8 +136,7 @@ class Game(ndb.Model):
 
         if winner:
             winner.get().add_win()
-            loser = self.userX
-            if winner == self.userO else self.userO
+            loser = self.userX if winner == self.userO else self.userO
             loser.get().add_loss()
         else:
             self.userX.get().add_draw()

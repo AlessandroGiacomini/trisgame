@@ -9,10 +9,8 @@ from protorpc import remote, messages
 from google.appengine.api import mail
 from google.appengine.ext import ndb
 from google.appengine.api import taskqueue
-from models import User, Game, Score
-from form import StringMessage, NewGameForm, GameForm, MakeMoveForm, \
-        ScoreForms, GameForms, UserForm, UserForms
-from utils import get_by_urlsafe, check_winner
+from models import User, Game, Score, StringMessage, NewGameForm, GameForm, MakeMoveForm, ScoreForms, GameForms, UserForm, UserForms
+from utils import get_by_urlsafe
 
 NEW_GAME_REQUEST = endpoints.ResourceContainer(NewGameForm)
 GET_GAME_REQUEST = endpoints.ResourceContainer(
@@ -58,7 +56,7 @@ class TrisAPI(remote.Service):
             raise endpoints.NotFoundException(
                 'A User with %s name does not exist!' % userX)
         # Check if userO exist
-        if not userO
+        if not userO:
             raise endpoints.NotFoundException(
                 'A User with %s name does not exist!' % userO)
         game = Game.new_game(userX.key, userO.key)
@@ -111,7 +109,7 @@ class TrisAPI(remote.Service):
         # 03 SIGN THE BOARD
         if x:
           game.board[move] = 'X'
-        else
+        else:
           game.board[move] = 'O'
 
         # 04 Add the move to the HISTORY MOVES
