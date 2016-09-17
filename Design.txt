@@ -3,7 +3,6 @@ What additional properties did you add to your models and why?
 * I modified reminder emails that only send emails to users who have a game actives every 12 hours.
 
 What were some of the trade-offs or struggles you faced when implementing the new game logic?
-
 * Has been hard understand google app engine however beyond the scene of the Guess a Number appand Conference app. I made use of endpoints exception and appropriate validations to manage common errors.
 
 Other
