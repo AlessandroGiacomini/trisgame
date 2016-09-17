@@ -123,7 +123,7 @@ class TrisAPI(remote.Service):
         else:
           game.turnOf = game.userX
 
-        # 06 Check if there's a winner. If there is it end game else end game with tie
+        # 06 Check if there's a winner. If there is it end game else end game with draw
         winner = checkWinner(game.board)
         if winner:
             game.end_game(user.key)
@@ -212,7 +212,7 @@ class TrisAPI(remote.Service):
         return UserForms(items=[user.to_form() for user in users])
 
     # 05 get_game_history
-    # Return the history of moves for a tris game.
+    # Return the history of moves for a TRIS game.
     @endpoints.method(request_message=GET_GAME_REQUEST,
                       response_message=StringMessage,
                       path='game/{urlsafe_game_key}/history',
