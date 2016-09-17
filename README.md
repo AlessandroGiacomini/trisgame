@@ -1,6 +1,7 @@
 # Project: TRIS Game - Alessandro Giacomini
 
 ## Set-Up Instructions:
+
 -----------------------------------
 1.  Update the value of application in app.yaml to the app ID you have registered
  in the App Engine admin console and would like to use to host your instance of this sample.
@@ -10,6 +11,7 @@
  Deploy your application.
 
 ## Files Included:
+
 -----------------------------------
  - api.py: Contains endpoints and game playing logic.
  - app.yaml: App configuration.
@@ -19,6 +21,7 @@
  - utils.py: Helper function for retrieving ndb.Models by urlsafe Key string.
 
 ## Game Description:
+
 -----------------------------------
 TRIS also known as Tic-tac-toe noughts and crosses or Xs and Os is a paper-and-pencil game for two players, X and O, who take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row wins the game.
 
@@ -32,8 +35,10 @@ More information about TRIS are available [here](https://en.wikipedia.org/wiki/T
 
 ## API Game Description:
 -----------------------------------
+
 ### Endpoints Included:
- - **create_user**
+ 
+- **create_user**
     - Path: 'user'
     - Method: POST
     - Parameters: user_name, email
@@ -110,7 +115,8 @@ More information about TRIS are available [here](https://en.wikipedia.org/wiki/T
     - Description: Return the history of moves for a TRIS game.
     
 ### Models Included:
- - **User**
+ 
+- **User**
     - Stores unique user_name and (optional) email address.
 
  - **Game**
@@ -121,7 +127,8 @@ More information about TRIS are available [here](https://en.wikipedia.org/wiki/T
     - Records completed games. Associated with Users model via KeyProperty.
 
 ## Forms Included:
- - **GameForm**
+ 
+- **GameForm**
     - Representation of a Game's state (urlsafe_key, board, sizeBoard,
     userX, userO, turnOf, boolCompleted, winner, draw).
  - **GameForms**
