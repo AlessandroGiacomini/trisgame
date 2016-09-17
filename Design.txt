@@ -1,0 +1,13 @@
+What additional properties did you add to your models and why?
+* I choose to record all moves of a Game adding the pickle property history to the Game.
+* I modified reminder emails that only send emails to users who have a game actives every 12 hours.
+
+What were some of the trade-offs or struggles you faced when implementing the new game logic?
+
+* Has been hard understand google app engine however beyond the scene of the Guess a Number appand Conference app. I made use of endpoints exception and appropriate validations to manage common errors.
+
+Other
+* I chosen to give 2 points for win, 1 point for draw and -2 points for lose.
+* Is sent an email to the users that have an incomplete game every 12 hours.
+* By literature the game could be played with board size bigger than 3*3. Here I choose as initial implementation a 3*3 board size by default.
+* The variable boolCompleted denote a completed Tris match.

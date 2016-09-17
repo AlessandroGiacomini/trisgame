@@ -116,7 +116,7 @@ class TrisAPI(remote.Service):
 
         # 04 Add the move to the HISTORY MOVES
         game.history.append(('X' if x else 'O', move))
-        
+
         # 05 Decide the TURN
         if x:
           game.turnOf = game.userO
@@ -138,7 +138,7 @@ class TrisAPI(remote.Service):
             if boolFull:
                 game.end_game()
         game.put()
-        
+
         return game.to_form()
 
     @endpoints.method(response_message=ScoreForms,
@@ -176,7 +176,7 @@ class TrisAPI(remote.Service):
         user = User.query(User.name == request.user_name).get()
         if not user:
             raise endpoints.BadRequestException('User not found!')
-        
+
         games = Game.query(ndb.OR(Game.userX == user.key,
                                   Game.userO == user.key)). \
             filter(Game.boolCompleted == False)

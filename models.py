@@ -122,21 +122,21 @@ class Game(ndb.Model):
         else:
             self.draw = True
         self.put()
-        
+
         if winner:
             result = 'userX' if winner == self.userX else 'userO'
         else:
             result = 'draw'
-        
-        score = Score(date=date.today(), 
+
+        score = Score(date=date.today(),
                       userX=self.userX,
-                      userO=self.userO, 
+                      userO=self.userO,
                       result=result)
         score.put()
 
         if winner:
             winner.get().add_win()
-            loser = self.userX 
+            loser = self.userX
             if winner == self.userO else self.userO
             loser.get().add_loss()
         else:
