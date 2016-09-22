@@ -135,6 +135,12 @@ class TrisAPI(remote.Service):
 
             if boolFull:
                 game.end_game()
+
+            else:
+                # Remainder email to player
+                taskqueue.add(url='/tasks/send_move_email',
+                              params={'user_key': game.hasToMove.urlsafe(),
+                                      'game_key': game.key.urlsafe()})
         game.put()
 
         return game.to_form()
