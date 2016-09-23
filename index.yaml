@@ -12,5 +12,5 @@ indexes:
 
 - kind: Game
   properties:
-  - name: boolCompleted
+  - name: game_over
   - name: user

@@ -1,4 +1,4 @@
 cron:
-- description: Send a reminder to Users with games in progress
+- description: Reminder for users which have active games
   url: /crons/send_reminder
-  schedule: every 12 hours
+  schedule: every 24 hours

@@ -4,6 +4,7 @@ import logging
 from google.appengine.ext import ndb
 import endpoints
 
+
 def get_by_urlsafe(urlsafe, model):
     """Returns an ndb.Model entity that the urlsafe key points to. Checks
         that the type of entity returned is of the correct kind. Raises an
@@ -35,26 +36,35 @@ def get_by_urlsafe(urlsafe, model):
     return entity
 
 
-def checkWinner(board, size=3):
-    """Check if there is a winner"""
+def boolFullCurrentBoard(currentBoard):
+    # Check if the currentBoard is full
+    for item in currentBoard:
+        if not item:
+            return False
+    return True
+
+
+def sameSigns(array):
+    # Same signs on the array
+    return all(x == array[0] for x in array)
+
+
+def lookForWin(currentBoard, size=3):
+    # Check all signs on DIAGONALS, ROWS AND COLUMNS
     for i in range(size):
-        if board[size * i]:
-            itemsOnRows = board[size * i:size * i + size]
-            #  Check if all items on a row in list have the same value
-            if (all(x == itemsOnRows[0] for x in itemsOnRows)):
-                return board[size * i]
+        if currentBoard[i]:
+            if sameSigns(currentBoard[i:size * size:size]):
+                return currentBoard[i]
+
     for i in range(size):
-        if board[i]:
-            itemsOnColumns = board[i:size * size:size]
-            #  Check if all items on a column in list have the same value
-            if (all(x == itemsOnColumns[0] for x in itemsOnColumns)):
-                return board[i]
-    if board[0]:
-        itemsOnDiagonals = board[0:size * size:size + 1]
-        #  Check if all items on a diagonal in list have the same value
-        if all(x == itemsOnDiagonals[0] for x in itemsOnDiagonals):
-            return board[0]
-    if board[size - 1]:
-        items = board[size - 1:size * (size - 1) + 1:size - 1]
-        if all(x == items[0] for x in items):
-            return board[size - 1]
+        if currentBoard[size * i]:
+            if sameSigns(currentBoard[size * i:size * i + size]):
+                return currentBoard[size * i]
+
+    if currentBoard[0]:
+        if sameSigns(currentBoard[0:size * size:size + 1]):
+            return currentBoard[0]
+
+    if currentBoard[size - 1]:
+        if sameSigns(currentBoard[size - 1:size * (size - 1) + 1:size - 1]):
+            return currentBoard[size - 1]

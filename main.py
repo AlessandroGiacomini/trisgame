@@ -1,25 +1,24 @@
 """main.py - This file contains handlers that are called by taskqueue and/or
 cronjobs."""
 
-#!/usr/bin/env python
+# !/usr/bin/env python
 import logging
 import webapp2
 from google.appengine.api import mail, app_identity
 from google.appengine.ext import ndb
-from utils import get_by_urlsafe
 from models import User, Game
-from api import TrisAPI
+from api import gameAPI
+from utils import get_by_urlsafe
 
 
 class SendReminderEmail(webapp2.RequestHandler):
     def get(self):
-        """ this reminder email is only sent to users that have incomplete games """
+        """Reminder to users with incomplete games"""
         users = User.query(User.email != None)
-
         for user in users:
-            games = Game.query(ndb.OR(Game.userX == user.key,
-                                      Game.userO == user.key)). \
-                                      filter(Game.boolCompleted == False)
+            games = Game.query(ndb.OR(Game.playerX == user.key,
+                                      Game.playerO == user.key)). \
+                            filter(Game.game_over == False)
             if games.count() > 0:
                 subject = 'This is a reminder!'
                 body = 'Hello {}, this email is for advice you about the '\
